@@ -3,8 +3,9 @@ package com.xuecheng.content.api;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("/test")
 public class TestController {
-    @GetMapping("/test")
+    @GetMapping("/test2")
     public  String test(String s){
         System.out.println("s");
         return "收到字符串："+s;
