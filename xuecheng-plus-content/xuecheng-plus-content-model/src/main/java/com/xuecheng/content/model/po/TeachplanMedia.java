@@ -28,11 +28,13 @@ public class TeachplanMedia implements Serializable {
     /**
      * 媒资文件id
      */
+    @TableField("media_id")
     private String mediaId;
 
     /**
      * 课程计划标识
      */
+    @TableField("teachplan_id")
     private Long teachplanId;
 
     /**
