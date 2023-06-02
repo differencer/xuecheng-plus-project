@@ -6,3 +6,15 @@ Content-Type: application/json
   "courseName": "java",
   "publishStatus": "203001"
 }
+
+###
+GET http://{{system_host}}/system/dictionary/all
+
+###
+GET http://localhost:8601/api/system/dictionary/all
+
+###
+GET http://localhost:8601/api/content/course/list?pageNo=1&pageSize=10
+Content-Type: application/json
+
+

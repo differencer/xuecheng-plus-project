@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -29,6 +30,13 @@ public class DictionaryController  {
         return dictionaryService.queryAll();
     }
 
+
+
+    @RequestMapping("/test")
+    public String test(){
+        System.out.println("进入接口？？？？？？？？");
+        return "进入";
+    }
     @GetMapping("/dictionary/code/{code}")
     public Dictionary getByCode(@PathVariable String code) {
         return dictionaryService.getByCode(code);

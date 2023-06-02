@@ -1,16 +1,35 @@
-server:
-  servlet:
-    context-path: /content
-  port: 63040
 #微服务配置
 spring:
   application:
     name: content-api
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://192.168.101.65:3306/xc_content?serverTimezone=UTC&userUnicode=true&useSSL=false
-    username: root
-    password: root
-# 日志文件配置路径
-logging:
-  config: classpath:log4j2-dev.xml
+  #微服务配置
+  cloud:
+    nacos:
+      server-addr: 192.168.101.65:8848
+      discovery:
+        namespace: dev
+        group: xuecheng-plus-project
+      #服务如果想要 “被配置”，本地需要配置如下信息（前面是上报四要素，下面是配置三要素）
+      #也即配置三要素
+      config:
+        namespace: dev
+        group: xuecheng-plus-project
+        # 必须写 yml 要与nacos 后缀一致，否则报错。。。 可能和依赖版本有关。。。
+        file-extension: yml
+        refresh-enabled: true
+        # 扩展配置，其实就是读取了数据库
+        extension-configs:
+          - data-id: content-service-${spring.profiles.active}.yaml
+            group: xuecheng-plus-project
+            refresh: true
+        # 通用配置 所有的微服务都需要日志，所有的结构都需要swagger文档，这个也可以提取出来
+        shared-configs:
+          - data-id: swagger-${spring.profiles.active}.yaml
+            group: xuecheng-plus-common
+            refresh: true
+          - data-id: logging-${spring.profiles.active}.yaml
+            group: xuecheng-plus-common
+            refresh: true
+  # 环境名，也是nacos dataid中拼接的那个东东
+  profiles:
+    active: dev
