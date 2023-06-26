@@ -4,7 +4,7 @@ spring:
     name: gateway
   cloud:
     nacos:
-      server-addr: 192.168.101.65:8848
+      server-addr: 59.110.13.16:8849
       discovery:
         namespace: dev
         group: xuecheng-plus-project

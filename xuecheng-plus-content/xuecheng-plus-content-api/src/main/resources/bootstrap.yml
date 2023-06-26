@@ -5,7 +5,7 @@ spring:
   #微服务配置
   cloud:
     nacos:
-      server-addr: 192.168.101.65:8848
+      server-addr: 59.110.13.16:8849
       discovery:
         namespace: dev
         group: xuecheng-plus-project
@@ -15,7 +15,7 @@ spring:
         namespace: dev
         group: xuecheng-plus-project
         # 必须写 yml 要与nacos 后缀一致，否则报错。。。 可能和依赖版本有关。。。
-        file-extension: yml
+        file-extension: yaml
         refresh-enabled: true
         # 扩展配置，其实就是读取了数据库
         extension-configs:
@@ -30,6 +30,13 @@ spring:
           - data-id: logging-${spring.profiles.active}.yaml
             group: xuecheng-plus-common
             refresh: true
+          - data-id: freemarker-config-${spring.profiles.active}.yaml
+            group: xuecheng-plus-common
+            refresh: true
+          - data-id: feign-${spring.profiles.active}.yaml
+            group: xuecheng-plus-common
+            refresh: true  #profiles默认为dev
+
   # 环境名，也是nacos dataid中拼接的那个东东
   profiles:
     active: dev

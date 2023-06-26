@@ -1,0 +1,63 @@
+
+### 授权码模式
+### 第一步申请授权码(浏览器请求)
+
+GET http://localhost:63070/auth/oauth/authorize?client_id=XcWebApp&response_type=code&scope=all&redirect_uri=http://www.51xuecheng.cn
+
+
+### 第二步申请令牌
+POST {{auth_host}}/auth/oauth/token?client_id=XcWebApp&client_secret=XcWebApp&grant_type=authorization_code&code=18So1d&redirect_uri=http://www.51xuecheng.cn
+
+
+
+### 密码模式
+POST {{auth_host}}/auth/oauth/token?client_id=XcWebApp&client_secret=XcWebApp&grant_type=password&username=lisi&password=456
+
+### 校验jwt令牌
+POST {{auth_host}}/auth/oauth/check_token?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsieHVlY2hlbmctcGx1cyJdLCJ1c2VyX25hbWUiOiJsaXNpIiwic2NvcGUiOlsiYWxsIl0sImV4cCI6MTY4Njk3NzY1MCwiYXV0aG9yaXRpZXMiOlsicDIiXSwianRpIjoiMjU0YWQ0ZTYtOTNkYy00YjRjLWI2NmQtYTQ0NmQ4YzQ1ZGM4IiwiY2xpZW50X2lkIjoiWGNXZWJBcHAifQ.uhYfiYQMJpOXkL2UagvrHoz55_gdE7Q34KSodU7OLeo
+
+### 密码模式
+POST {{auth_host}}/auth/oauth/token?client_id=XcWebApp&client_secret=XcWebApp&grant_type=password&username=lisi&password=456
+
+### 密码模式
+POST {{auth_host}}/auth/oauth/token?client_id=XcWebApp&client_secret=XcWebApp&grant_type=password&username=stu1&password=111111
+
+### 校验jwt令牌
+POST {{auth_host}}/auth/oauth/check_token?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsieHVlY2hlbmctcGx1cyJdLCJ1c2VyX25hbWUiOiJ7XCJiaXJ0aGRheVwiOlwiMjAyMi0wOS0yOFQxOToyODo0NlwiLFwiY3JlYXRlVGltZVwiOlwiMjAyMi0wOS0yOFQwODozMjowM1wiLFwiaWRcIjpcIjUwXCIsXCJuYW1lXCI6XCLlrabnlJ8xXCIsXCJuaWNrbmFtZVwiOlwi5aSn5rC054mbXCIsXCJzZXhcIjpcIjFcIixcInN0YXR1c1wiOlwiMVwiLFwidXNlcm5hbWVcIjpcInN0dTFcIixcInVzZXJwaWNcIjpcImh0dHA6Ly9maWxlLnh1ZWNoZW5nLXBsdXMuY29tL2RkZGZcIixcInV0eXBlXCI6XCIxMDEwMDFcIn0iLCJzY29wZSI6WyJhbGwiXSwiZXhwIjoxNjg3MTA1Mjk0LCJhdXRob3JpdGllcyI6WyJ0ZXN0Il0sImp0aSI6ImZiNDI0MTQ1LTI4OGQtNGYxNS1iZjRiLTI4Y2U1YjU3ZmIxMyIsImNsaWVudF9pZCI6IlhjV2ViQXBwIn0.fm9NfahdgQh3JbefuNGQvia5hP621Ey22hJJyQBxiC8
+
+
+### 密码模式
+POST localhost:63070/auth/oauth/token?client_id=XcWebApp&client_secret=XcWebApp&grant_type=password&username={"username":"lisi","password":"456","authTpye":"password"}&password=456
+
+
+
+
+### 密码模式
+POST localhost:63070/auth/oauth/token?client_id=XcWebApp&client_secret=XcWebApp&grant_type=password&username={"username":"stu1","password":"111111","authType":"password"}&password=111111
+
+
+### 微信
+POST localhost:8160/auth/oauth/token?client_id=XcWebApp&client_secret=XcWebApp&grant_type=password&username={"username":"oWgGz1EYHi0Oq_hprfCcboiNgiHA","authType":"wx"}
+
+
+### 校验jwt令牌
+POST localhost:8160/auth/oauth/check_token?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsieHVlY2hlbmctcGx1cyJdLCJ1c2VyX25hbWUiOiJ7XCJjb21wYW55SWRcIjpcIjEyMzIxNDE0MjVcIixcImNyZWF0ZVRpbWVcIjpcIjIwMjItMDktMjhUMDg6MzI6MDNcIixcImlkXCI6XCI1MlwiLFwibmFtZVwiOlwiTeiAgeW4iFwiLFwicGVybWlzc2lvbnNcIjpbXSxcInNleFwiOlwiMVwiLFwic3RhdHVzXCI6XCJcIixcInVzZXJuYW1lXCI6XCJ0MVwiLFwidXR5cGVcIjpcIjEwMTAwMlwifSIsInNjb3BlIjpbImFsbCJdLCJleHAiOjE2ODc2MDQwNjcsImF1dGhvcml0aWVzIjpbInRlc3QiXSwianRpIjoiYjczNjJhNmYtNjY3NS00OThkLWIyMTctYzBiNGYwOGY0Y2M1IiwiY2xpZW50X2lkIjoiWGNXZWJBcHAifQ.TGHjaIojDClVyX93L_sw-SKY-pWkGcJmjHtUaHMrdp8
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

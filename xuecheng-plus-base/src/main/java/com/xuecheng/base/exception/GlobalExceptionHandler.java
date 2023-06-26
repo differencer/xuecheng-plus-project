@@ -7,6 +7,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
+
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,9 +56,14 @@ public class GlobalExceptionHandler {
         // 记录
         log.error("系统异常：{}",e.getMessage(),e);
         // 解析出
+        e.printStackTrace();
+        if(e.getMessage().equals("不允许访问")){
+            return new RestErrorResponse("没有操作此功能的权限");
+        }
         RestErrorResponse errorResponse = new RestErrorResponse(CommonError.UNKOWN_ERROR.getErrMessage());
         return errorResponse;
     }
+
 
 
 }

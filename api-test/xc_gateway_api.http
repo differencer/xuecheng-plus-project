@@ -1,0 +1,19 @@
+### 课程查询列表
+POST {{gateway_host}}/content/course/list?pageNo=1&pageSize=2
+Content-Type: application/json
+
+{
+  "auditStatus": "",
+  "courseName": "",
+  "publishStatus": ""
+}
+
+
+### 密码模式
+POST {{auth_host}}/auth/oauth/token?client_id=XcWebApp&client_secret=XcWebApp&grant_type=password&username=lisi&password=456
+
+
+### 获取资源
+GET {{gateway_host}}/content/course/124
+Authorization: Bearer eJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsieHVlY2hlbmctcGx1cyJdLCJ1c2VyX25hbWUiOiJsaXNpIiwic2NvcGUiOlsiYWxsIl0sImV4cCI6MTY4NzA5Mzk5OSwiYXV0aG9yaXRpZXMiOlsicDIiXSwianRpIjoiMDgxOTczZTYtNTE4NC00NzQ5LWE2MjUtNDdjMjIxNWMyNDMzIiwiY2xpZW50X2lkIjoiWGNXZWJBcHAifQ.JxvOAAL1DLEBT4j_R5z7xXSfqjZQev9TNtFsaj8e0MA
+

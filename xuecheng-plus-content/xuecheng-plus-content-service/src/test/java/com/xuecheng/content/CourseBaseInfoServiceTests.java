@@ -1,4 +1,4 @@
-package com.xuecheng;
+package com.xuecheng.content;
 
 import com.xuecheng.base.model.PageParams;
 import com.xuecheng.base.model.PageResult;
@@ -28,8 +28,8 @@ class CourseBaseInfoServiceTests {
         PageParams pageParams = new PageParams();
         pageParams.setPageNo(1L);//页码
         pageParams.setPageSize(3L);//每页记录数
-
-        PageResult<CourseBase> courseBasePageResult = courseBaseInfoService.queryCourseBaseList(pageParams, queryCourseParamsDto);
+        Long companyId = 1232141425L;
+        PageResult<CourseBase> courseBasePageResult = courseBaseInfoService.queryCourseBaseList(companyId,pageParams, queryCourseParamsDto);
         System.out.println(courseBasePageResult);
     }
 

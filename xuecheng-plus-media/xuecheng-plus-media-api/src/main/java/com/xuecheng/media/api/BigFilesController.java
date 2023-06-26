@@ -77,15 +77,7 @@ public class BigFilesController {
 
     }
 
-    /** 文件预览
-     *
-     */
-    @ApiOperation(value = "预览文件")
-    @GetMapping("/preview/{mediaId}")
-    public RestResponse<String> getPlayUrlByMediaId(@PathVariable String mediaId) {
-        MediaFiles mediaFile = mediaFileService.getFileById(mediaId);
-        return RestResponse.success(mediaFile.getUrl());
-    }
+
 
 
 }

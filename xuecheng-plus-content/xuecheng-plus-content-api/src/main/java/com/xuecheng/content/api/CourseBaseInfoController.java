@@ -10,10 +10,14 @@ import com.xuecheng.content.model.dto.EditCourseDto;
 import com.xuecheng.content.model.dto.QueryCourseParamsDto;
 import com.xuecheng.content.model.po.CourseBase;
 import com.xuecheng.content.service.CourseBaseInfoService;
+import com.xuecheng.content.utils.SecurityUtil;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang.StringUtils;
 import org.apache.logging.log4j.core.impl.ReusableLogEventFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.spring.web.json.Json;
@@ -42,10 +46,16 @@ public class CourseBaseInfoController {
      *
      */
   @PostMapping("/course/list")
+  @ApiOperation("课程查询接口")
+  @PreAuthorize("hasAuthority('xc_teachmanager_course_list')")
   public PageResult<CourseBase> list(PageParams pageParams, @RequestBody(required = false) QueryCourseParamsDto queryCourseParams){
      log.info("pageParams:{},QueryParams:{}", JSON.toJSONString(pageParams),JSON.toJSONString(queryCourseParams));
-
-     PageResult<CourseBase> pageResult = courseBaseInfoService.queryCourseBaseList(pageParams,queryCourseParams);
+      SecurityUtil.XcUser user = SecurityUtil.getUser();
+      Long companyId = null;
+      if(StringUtils.isEmpty(user.getCompanyId())){
+          companyId=Long.parseLong(user.getCompanyId());
+      }
+      PageResult<CourseBase> pageResult = courseBaseInfoService.queryCourseBaseList(companyId,pageParams,queryCourseParams);
 //     log.info("结果集：{}",pageResult);
 //     System.out.println(pageResult);
      return pageResult;
@@ -74,7 +84,13 @@ public class CourseBaseInfoController {
     @ApiOperation("根据课程id查询课程基础信息")
     @GetMapping("/course/{courseId}")
     public CourseBaseInfoDto getCourseBaseById(@PathVariable Long courseId){
-
+//        // 获取当前用户身份信息
+//        Object principal = SecurityContextHolder.getContext() //拿到contenxt
+//                .getAuthentication() //  拿到认证信息
+//                .getPrincipal();// 拿到身份
+//        System.out.println(principal); // 看看打印出来的身份信息时什么样的
+//        SecurityUtil.XcUser user = SecurityUtil.getUser();
+//        System.out.println(JSON.toJSONString(user));
         return courseBaseInfoService.getCourseBaseInfo(courseId);
     }
 
